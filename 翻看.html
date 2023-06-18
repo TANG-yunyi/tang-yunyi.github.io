@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻看</title>
+    <link rel="stylesheet" href="黑暗模式.css"/>
+    <script src="黑暗模式.js"></script>
+    <style>
+        * {
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        div>div:hover,button:hover{
+            transition: 0.05s;
+            transform:scale(1.1);
+            box-shadow: 0 0 30px -10px #D90429;
+        }
+        body {
+            justify-content: center;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        #bar {
+            justify-content: center;
+            display: flex;
+            height: 15vh;
+            margin-top: 2vh;
+            margin-left: 2vh;
+            margin-right: 2vh;
+        }
+
+        #main {
+            justify-content: center;
+            /* align-items: center; */
+            display: flex;
+            height: 75vh;
+            margin: 1vh;
+        }
+
+        #title {
+            background: #efd9c3;
+            width: 66vw;
+            margin: 1vh;
+        }
+
+        #light {
+            background:#a9b7c0;
+            width: 22.6vw;
+            margin: 1vh;
+        }
+
+        #pic {
+            width: 73vw;
+            background: #c7d8c6;
+            margin: 1vh;
+        }
+
+        #button {
+            width: 16vw;
+            background: #cccbc6;
+            margin: 1vh;
+            height: 16vw;
+        }
+
+    </style>
+    <script>
+        // Get all the images
+        image_array = [
+            'pic-(1).gif',
+            'pic-(2).gif',
+            'pic-(3).gif',
+            'pic-(4).gif',
+            'pic-(5).gif',
+            'pic-(6).gif',
+            'pic-(7).gif',
+            'pic-(8).gif',
+            'pic-(9).gif',
+            'pic-(10).gif',
+            'pic-(11).gif',
+            'pic-(12).gif',
+            'pic-(13).gif',
+            'pic-(14).gif',
+            'pic-(15).gif',
+            'pic-(16).gif',
+            'pic-(17).gif',
+            'pic-(18).gif',
+            'pic-(19).gif',
+            'pic-(21).gif',
+            'pic-(22).gif',
+            'pic-(23).gif',
+            'pic-(24).gif',
+            'pic-(25).gif',
+            'pic-(26).gif',
+            'pic-(27).gif',
+            'pic-(28).gif',
+            'pic-(29).gif',
+            'pic-(20).gif',
+            'pic-(31).gif',
+            'pic-(32).gif',
+            'pic-(33).gif',
+            'pic-(34).gif',
+            'pic-(35).gif',
+            'pic-(36).gif',
+            'pic-(37).gif',
+            'pic-(38).gif',
+            'pic-(39).gif',
+            'pic-(30).gif',
+            'pic-(40).gif',
+
+        ]
+        function get_random_image() {
+            random_index = Math.floor(Math.random() * image_array.length);
+            selected_image = image_array[random_index]
+            document.getElementById('image_shower').src = `./image/${selected_image}`
+        }
+    </script>
+</head>
+
+<body>
+    <div id="bar">
+        <a href="./index.html"><div id="title">东师记录</div></a>
+        <button id="light" onclick="myFunction()">黑暗模式</button>
+    </div>
+    <div id="main">
+        <div id="pic">
+            <img id="image_shower" />
+        </div>
+            <button id="button" onclick="get_random_image()">换一张</button>
+    </div>
+</body>
+
+</html>

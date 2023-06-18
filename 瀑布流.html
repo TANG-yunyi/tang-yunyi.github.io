@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="黑暗模式.css"/>
+    <script src="黑暗模式.js"></script>
+    <style>
+        
+        * {
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        div>div:hover,button:hover{
+            transition: 0.05s;
+            transform:scale(1.1);
+            box-shadow: 0 0 30px -10px #D90429;
+        }
+        body {
+            justify-content:flex-start;
+            align-items: center;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        #bar {
+            justify-content: center;
+            display: flex;
+            height: 15vh;
+            margin-top: 2vh;
+            margin-left: 2vh;
+            margin-right: 2vh;
+        }
+
+        .box {
+            position: relative;
+        }
+        .item {
+            position: absolute;
+        }
+        #title {
+            background: #a9b7c0;
+            width: 66vw;
+            margin: 1vh;
+        }
+
+        #light {
+            background: #c7d8c6;
+            width: 22.6vw;
+            margin: 1vh;
+        }
+        img {
+            border-radius: 10px;
+			width: 236px;
+			/*  */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="bar">
+        <a href="./index.html"><div id="title">东师记录</div></a>
+        
+        <button id="light" onclick="myFunction()">黑暗模式</button>
+    </div>
+<div class="box"></div>
+<script>
+    var imgData = `{
+        "data": [
+            { "src": "pic-(40).gif" },
+            { "src": "pic-(39).gif" },
+            { "src": "pic-(38).gif" },
+            { "src": "pic-(37).gif" },
+            { "src": "pic-(36).gif" },
+            { "src": "pic-(35).gif" },
+            { "src": "pic-(34).gif" },
+            { "src": "pic-(33).gif" },
+            { "src": "pic-(32).gif" },
+            { "src": "pic-(31).gif" },
+            { "src": "pic-(30).gif" },
+            { "src": "pic-(29).gif" },
+            { "src": "pic-(28).gif" },
+            { "src": "pic-(27).gif" },
+            { "src": "pic-(26).gif" },
+            { "src": "pic-(25).gif" },
+            { "src": "pic-(24).gif" },
+            { "src": "pic-(23).gif" },
+            { "src": "pic-(22).gif" },
+            { "src": "pic-(21).gif" },
+            { "src": "pic-(20).gif" },
+            { "src": "pic-(19).gif" },
+            { "src": "pic-(18).gif" },
+            { "src": "pic-(17).gif" },
+            { "src": "pic-(16).gif" },
+            { "src": "pic-(15).gif" },
+            { "src": "pic-(14).gif" },
+            { "src": "pic-(13).gif" },
+            { "src": "pic-(12).gif" },
+            { "src": "pic-(11).gif" },
+            { "src": "pic-(10).gif" },
+            { "src": "pic-(9).gif" },
+            { "src": "pic-(8).gif" },
+            { "src": "pic-(7).gif" },
+            { "src": "pic-(6).gif" },
+            { "src": "pic-(5).gif" },
+            { "src": "pic-(4).gif" },
+            { "src": "pic-(3).gif" },
+            { "src": "pic-(2).gif" },
+            { "src": "pic-(1).gif" }
+        ]
+    }`;
+
+    var imgData = JSON.parse(imgData);
+    var str = '';
+
+    for (var i=0; i<imgData.data.length; i++) {
+        str += `<div class="item"><img src="image/${imgData.data[i].src}" /></div>`;
+    }
+    
+    var box = document.querySelector('.box');
+    box.innerHTML = str;
+
+
+    window.onload = function() {
+        waterfall();
+    };
+    //改窗口尺寸
+    window.onresize = function() {
+        waterfall();
+    };
+    window.onscroll = function() {
+        var res = scrollFn();
+
+        if (res) {
+            var box = document.querySelector('.box');
+            for (var i=0; i<imgData.data.length; i++) {
+                var img = new Image();
+                img.src = 'image/' + imgData.data[i].src;
+                var div = document.createElement('div');
+                div.className = 'item';
+                div.appendChild(img);
+                box.appendChild(div);
+            }
+            waterfall();
+        }
+    };
+
+    function waterfall() {
+            var items = document.querySelectorAll('.item');
+
+        var itemWidth = items[0].offsetWidth;
+        var bodyWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var num = Math.floor(bodyWidth / itemWidth);
+        box.style.width = num * itemWidth + 'px';
+        var itemHeight = [];
+        for (var i=0; i<items.length; i++) {
+            if (i < num) {
+                items[i].style.top = 0;
+                items[i].style.left = itemWidth * i + 'px';
+                itemHeight.push(items[i].offsetHeight);
+            } 
+            else {
+                var minItemHeight = Math.min.apply(null, itemHeight); 
+                var index = itemHeight.indexOf(minItemHeight);
+        
+
+                items[i].style.left = items[index].offsetLeft + 'px'
+                items[i].style.top = minItemHeight + 'px';
+
+
+                itemHeight[index] = minItemHeight + items[i].offsetHeight;
+            }
+        }
+    }
+
+
+   
+    function scrollFn() {
+        var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        var bodyHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+        var items = document.querySelectorAll('.item');
+        var lastItem = items[items.length - 1].offsetTop;
+
+
+        if (bodyScrollTop + bodyHeight > lastItem) {
+            return true;
+        }
+    }
+
+</script>
+</body>
+
+</html>

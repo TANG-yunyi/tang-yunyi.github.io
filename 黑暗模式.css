@@ -1,0 +1,27 @@
+  body {
+    justify-content: center;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  img{
+    border-radius: 15px;
+    padding: 1vh;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+*{
+  font-size:5vw;
+  font-family:STXingkai;
+  text-align: center;
+  /* line-height:100vh */
+}
+a{
+  text-decoration: none;
+}

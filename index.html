@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="黑暗模式.css"/>
+    <script src="黑暗模式.js"></script>
+    <style>
+        
+        * {
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        div>div:hover,button:hover{
+            transition: 0.05s;
+            transform:scale(1.1);
+            box-shadow: 0 0 30px -10px #D90429;
+        }
+        body {
+            justify-content: center;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        #bar {
+            justify-content: center;
+            display: flex;
+            height: 15vh;
+            margin-top: 2vh;
+            margin-left: 2vh;
+            margin-right: 2vh;
+        }
+
+        #main {
+            justify-content: center;
+            display: flex;
+            height: 75vh;
+            margin: 1vh;
+        }
+
+        #title {
+            background: #a9b7c0;
+            width: 66vw;
+            margin: 1vh;
+        }
+
+        #light {
+            background: #c7d8c6;
+            width: 22.6vw;
+            margin: 1vh;
+        }
+
+        #pic {
+            width: 71vw;
+            background: #efd9c3;
+            margin: 1vh;
+        }
+
+        #button {
+            width: 19vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .start {
+            background: #cccbc6;
+            height: 36vh;
+            margin: 1vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar">
+        <div id="title">东师记录</div>
+        <button id="light" onclick="myFunction()">黑暗模式</button>
+    </div>
+    <div id="main">
+        <div id="pic">
+            <img src="./image/ds.png" alt="">
+        </div>
+
+        <div id="button">
+            <a href="./瀑布流.html"><div class="start">瀑布流</div></a>
+            <a href="./翻看.html"><div class="start">翻看</div></a>
+        </div>
+    </div>
+</body>
+
+</html>
